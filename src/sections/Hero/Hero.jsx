@@ -44,10 +44,10 @@ export default function Hero() {
                 className={styles.image}
               />
             </div>
-            <div className={styles.imageBadge} aria-label="4+ years experience">
+            {/* <div className={styles.imageBadge} aria-label="4+ years experience">
               <span className={styles.badgeNumber}>4+</span>
               <span className={styles.badgeText}>Years of<br />Experience</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>
