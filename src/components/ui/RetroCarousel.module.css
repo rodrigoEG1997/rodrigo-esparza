@@ -1,0 +1,495 @@
+/* ── Carousel wrapper ── */
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.carouselTrack {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  overscroll-behavior-x: auto;
+  scroll-behavior: smooth;
+  padding: 1.25rem 0;
+  scrollbar-width: none;
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding-left: 0.75rem;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.carouselItem {
+  border-radius: 1.5rem;
+  flex-shrink: 0;
+}
+
+.carouselItem:last-child {
+  padding-right: 5%;
+}
+
+@media (min-width: 768px) {
+  .carouselItem:last-child {
+    padding-right: 18%;
+  }
+}
+
+/* ── Nav buttons ── */
+.navButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.navBtn {
+  position: relative;
+  z-index: 40;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 9999px;
+  background-color: #4b3f33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.navBtn:hover {
+  background-color: rgba(75, 63, 51, 0.75);
+}
+
+.navBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Expanded overlay ── */
+.expandedOverlay {
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.backdrop {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  inset: 0;
+}
+
+.expandedCard {
+  max-width: 64rem;
+  margin: 1.5rem auto;
+  background: linear-gradient(to bottom, #f2f0eb, #fff9eb);
+  height: calc(100% - 3rem);
+  z-index: 60;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  position: relative;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .expandedCard {
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    height: calc(100% - 5rem);
+  }
+}
+
+.closeBtn {
+  position: sticky;
+  top: 0;
+  height: 2rem;
+  width: 2rem;
+  margin-left: auto;
+  display: flex;
+  border-radius: 9999px;
+  align-items: center;
+  justify-content: center;
+  background-color: #4b3f33;
+  border: none;
+  cursor: pointer;
+}
+
+.expandedDesignation {
+  padding: 0 1.25rem;
+  color: rgba(31, 27, 29, 0.6);
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.04em;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .expandedDesignation {
+    padding: 0 5rem;
+    font-size: 1.05rem;
+  }
+}
+
+.expandedTitle {
+  padding: 0 1.25rem;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: rgba(31, 27, 29, 0.85);
+  margin-top: 0.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .expandedTitle {
+    padding: 0 5rem;
+    font-size: 2.5rem;
+  }
+}
+
+.expandedDescription {
+  padding: 2rem 1.25rem;
+  color: rgba(31, 27, 29, 0.75);
+  font-size: 1.375rem;
+  font-weight: 300;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 768px) {
+  .expandedDescription {
+    padding: 2rem 5rem;
+    font-size: 1.625rem;
+  }
+}
+
+.quoteIcon {
+  display: block;
+  color: rgba(31, 27, 29, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+.expandedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 1.25rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .expandedTags {
+    padding: 0 5rem 2rem;
+  }
+}
+
+.tag {
+  padding: 3px 0.75rem;
+  font-size: 0.7rem;
+  border-radius: 9999px;
+  background-color: rgba(75, 63, 51, 0.1);
+  color: rgba(75, 63, 51, 0.75);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── Card (collapsed) ── */
+.cardButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+}
+
+.card {
+  border-radius: 1.5rem;
+  background: var(--card-bg, #b4d7e8);
+  height: 500px;
+  width: 300px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 768px) {
+  .card {
+    height: 550px;
+    width: 360px;
+  }
+}
+
+.cardBg {
+  position: absolute;
+  opacity: 0.25;
+  top: -1px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.cardBgImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cardDescription {
+  color: rgba(31, 27, 29, 0.72);
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  margin-top: 1rem;
+  padding: 0 1.25rem;
+  line-height: 1.45;
+}
+
+.cardTitle {
+  color: var(--card-text, rgba(15, 35, 55, 0.9));
+  font-size: 1.65rem;
+  font-weight: 600;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  padding: 0 0.75rem;
+  line-height: 1.2;
+}
+
+.cardDesignation {
+  color: var(--card-subtext, rgba(15, 35, 55, 0.55));
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+/* ── Profile image ── */
+.profileImageWrapper {
+  width: 90px;
+  height: 90px;
+  opacity: 0.8;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 3px solid rgba(59, 59, 59, 0.55);
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  filter: saturate(0.2) sepia(0.46);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .profileImageWrapper {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.profileImage {
+  transition: filter 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 50;
+}
+
+.profileImageLoading {
+  filter: blur(4px);
+}
+
+/* ── Cover image (replaces circular avatar on card front) ── */
+.coverWrapper {
+  width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.coverImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 1.25rem 1.25rem 0 0;
+  filter: saturate(0.35) sepia(0.3);
+}
+
+.coverImageCompact {
+  height: 140px;
+}
+
+.coverFade {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: linear-gradient(to top, #b4d7e8, transparent);
+  pointer-events: none;
+}
+
+.cardTextArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 0 1.25rem 1rem;
+  gap: 0.5rem;
+}
+
+/* ── Expanded images (two images at the bottom of expanded view) ── */
+.expandedImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem 1rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .expandedImages {
+    padding: 0.5rem 5rem 1rem;
+  }
+}
+
+.expandedImgItem {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  filter: saturate(0.4) sepia(0.25);
+  cursor: zoom-in;
+  transition: filter 0.2s;
+}
+
+.expandedImgItem:hover {
+  filter: saturate(0.6) sepia(0.15);
+}
+
+@media (min-width: 768px) {
+  .expandedImgItem {
+    height: 340px;
+  }
+}
+
+/* ── Image lightbox ── */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.lightboxImg {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 0.75rem;
+  object-fit: contain;
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.5);
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  border-radius: 9999px;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background 0.15s;
+}
+
+.lightboxClose:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Compact variant (used as subsection inside About) ── */
+.cardCompact {
+  height: 320px;
+  width: 210px;
+  border-radius: 1.125rem;
+  background: var(--card-bg, #b4d7e8);
+}
+
+@media (min-width: 768px) {
+  .cardCompact {
+    height: 360px;
+    width: 240px;
+  }
+}
+
+.profileImageWrapperCompact {
+  width: 64px;
+  height: 64px;
+}
+
+@media (min-width: 768px) {
+  .profileImageWrapperCompact {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.cardDescriptionCompact {
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+  padding: 0 0.75rem;
+}
+
+.cardTitleCompact {
+  font-size: 1.25rem;
+}
+
+.cardDesignationCompact {
+  font-size: 0.9rem;
+}

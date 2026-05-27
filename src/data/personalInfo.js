@@ -8,9 +8,9 @@ const personalInfo = {
   phone: '+353 83 416 0019',
   linkedin: 'https://linkedin.com/in/rodrigoesparza',
   github: 'https://github.com/rodrigoesparza',
-  about: `Software Engineer with 4+ years of experience designing and building scalable systems, currently focused on AI-based solutions. I work end-to-end — from data exploration and model training to production deployment — with a strong engineering mindset around testing, versioning, and MLOps.
+  about: `I’m a software engineer focused on building intelligent systems that solve real-world problems. Over the past 4+ years, I’ve worked across AI, backend engineering, data systems, and cloud infrastructure, designing scalable solutions from idea to production.
 
-I've built LLM-powered products, designed ETL pipelines at scale, and translated complex business problems into actionable AI solutions. I care deeply about clean architecture, reliable systems, and meaningful impact.`,
+My work combines technical depth with business thinking. From LLM-powered applications and large-scale ETL pipelines to full-stack platforms and AI architecture, I enjoy turning complex challenges into reliable, impactful products that people actually use.`,
 };
 
 export default personalInfo;

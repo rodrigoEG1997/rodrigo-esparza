@@ -4,6 +4,7 @@ import SectionTitle from '../../components/ui/SectionTitle';
 import Button from '../../components/ui/Button';
 import styles from './Contact.module.css';
 import personalInfo from '../../data/personalInfo';
+import bgGif from '../../assets/videos/background.gif';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -25,6 +26,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className={styles.contact} aria-labelledby="contact-heading">
+      <img src={bgGif} className={styles.bgGif} aria-hidden="true" alt="" />
       <Container>
         <div className={styles.inner}>
           <div className={styles.textSide}>
@@ -32,9 +34,10 @@ export default function Contact() {
               label="Get in touch"
               title="Let's work together."
               align="left"
+              light
             />
             <p className={styles.description}>
-              Whether you have a project in mind, an opportunity to explore, or just want to say hello — I'm always open to a conversation.
+              Whether you have a project in mind, an opportunity to explore, or just want to say hello, I'm always open to a conversation.
             </p>
 
             <div className={styles.contactItems}>
@@ -54,33 +57,29 @@ export default function Contact() {
               <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
                 <div className={styles.contactIcon} aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                    <rect x="2" y="9" width="4" height="12"/>
-                    <circle cx="4" cy="4" r="2"/>
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                   </svg>
                 </div>
                 <div>
                   <span className={styles.contactLabel}>LinkedIn</span>
-                  <span className={styles.contactValue}>rodrigoesparza</span>
+                  <span className={styles.contactValue}>www.linkedin.com/in/rodrigoesparza</span>
                 </div>
               </a>
 
-              <div className={styles.contactItem}>
+              <a href="tel:+353834160019" className={styles.contactItem}>
                 <div className={styles.contactIcon} aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
+                  📞
                 </div>
                 <div>
-                  <span className={styles.contactLabel}>Location</span>
-                  <span className={styles.contactValue}>{personalInfo.location}</span>
+                  <span className={styles.contactLabel}>Phone Number</span>
+                  <span className={styles.contactValue}>+353 83 416 0019</span>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
           <div className={styles.formSide}>
+
             <form onSubmit={handleSubmit} className={styles.form} aria-label="Contact form" noValidate>
               <div className={styles.row}>
                 <div className={styles.field}>
@@ -113,13 +112,12 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className={styles.field}>
+              <div className={`${styles.field} ${styles.messageField}`}>
                 <label htmlFor="message" className={styles.label}>Message</label>
                 <textarea
                   id="message"
                   name="message"
                   required
-                  rows={6}
                   value={form.message}
                   onChange={handleChange}
                   className={styles.textarea}

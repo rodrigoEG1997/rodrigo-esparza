@@ -1,50 +1,39 @@
 import Container from '../../components/ui/Container';
 import SectionTitle from '../../components/ui/SectionTitle';
+import { ExpandableCard } from '../../components/ui/ExpandableCard';
 import styles from './TechStack.module.css';
-import techStack from '../../data/techStack';
-
-const categoryLabels = {
-  language: 'Languages',
-  ai: 'AI & ML',
-  backend: 'Backend',
-  frontend: 'Frontend',
-  data: 'Data',
-  cloud: 'Cloud',
-  tools: 'Tools',
-};
-
-const categoryOrder = ['language', 'ai', 'backend', 'frontend', 'data', 'cloud', 'tools'];
+import experienceCards from '../../data/techStack';
 
 export default function TechStack() {
-  const grouped = categoryOrder.reduce((acc, cat) => {
-    const items = techStack.filter((t) => t.category === cat);
-    if (items.length > 0) acc[cat] = items;
-    return acc;
-  }, {});
-
   return (
     <section id="techstack" className={styles.techstack} aria-labelledby="techstack-heading">
       <Container>
         <SectionTitle
-          label="Tools"
+          label="Expertise"
           title="Tech Stack"
-          subtitle="The technologies and tools I work with daily — from AI frameworks to cloud platforms."
-          light
+          subtitle="The technologies and tools I work with daily, from AI frameworks to cloud platforms."
         />
 
-        <div className={styles.groups}>
-          {Object.entries(grouped).map(([cat, items]) => (
-            <div key={cat} className={styles.group}>
-              <span className={styles.groupLabel}>{categoryLabels[cat]}</span>
-              <div className={styles.items}>
-                {items.map((tech) => (
-                  <div key={tech.name} className={styles.techItem}>
-                    <span className={styles.techIcon} aria-hidden="true">{tech.icon}</span>
-                    <span className={styles.techName}>{tech.name}</span>
-                  </div>
+        <div className={styles.grid}>
+          {experienceCards.map((card) => (
+            <ExpandableCard
+              key={card.title}
+              title={card.title}
+              description={card.subtitle}
+              src={card.image}
+            >
+              {card.highlights.map((h) => (
+                <div key={h.title} className={styles.highlight}>
+                  <h4 className={styles.highlightTitle}>{h.title}</h4>
+                  <p>{h.description}</p>
+                </div>
+              ))}
+              <div className={styles.skillTags}>
+                {card.skills.map((skill) => (
+                  <span key={skill} className={styles.skillTag}>{skill}</span>
                 ))}
               </div>
-            </div>
+            </ExpandableCard>
           ))}
         </div>
       </Container>

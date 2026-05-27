@@ -49,11 +49,11 @@
 }
 
 .light .title {
-  color: var(--color-white);
+  color: rgba(255, 255, 255, 1);
 }
 
 .light .subtitle {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 768px) {

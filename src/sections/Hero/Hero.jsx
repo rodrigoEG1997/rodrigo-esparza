@@ -3,10 +3,12 @@ import Button from '../../components/ui/Button';
 import styles from './Hero.module.css';
 import personalInfo from '../../data/personalInfo';
 import profilePic from '../../assets/images/profile/profile_picture.jpeg';
+import bgGif from '../../assets/videos/background.gif';
 
 export default function Hero() {
   return (
     <section id="hero" className={styles.hero} aria-label="Introduction">
+      <img src={bgGif} className={styles.bgGif} aria-hidden="true" alt="" />
       <div className={styles.backdrop} aria-hidden="true" />
       <Container>
         <div className={styles.inner}>
@@ -19,8 +21,8 @@ export default function Hero() {
               <Button href="#contact" variant="primary">
                 Get in touch
               </Button>
-              <Button href="#projects" variant="ghost">
-                View my work
+              <Button href="#experience" variant="ghost">
+                View my experience
               </Button>
             </div>
             <div className={styles.meta}>
@@ -31,8 +33,6 @@ export default function Hero() {
                 </svg>
                 {personalInfo.location}
               </span>
-              {/* <span className={styles.metaDivider} aria-hidden="true" /> */}
-              {/* <span className={styles.metaItem}>Available for opportunities</span> */}
             </div>
           </div>
 
@@ -44,10 +44,6 @@ export default function Hero() {
                 className={styles.image}
               />
             </div>
-            {/* <div className={styles.imageBadge} aria-label="4+ years experience">
-              <span className={styles.badgeNumber}>4+</span>
-              <span className={styles.badgeText}>Years of<br />Experience</span>
-            </div> */}
           </div>
         </div>
       </Container>

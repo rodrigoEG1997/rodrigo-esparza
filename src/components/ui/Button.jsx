@@ -12,7 +12,7 @@ export default function Button({
   const classes = `${styles.button} ${styles[variant]} ${className}`;
 
   if (href) {
-    const isExternal = href.startsWith('http') || href.startsWith('mailto');
+    const isExternal = href.startsWith('http');
     return (
       <a
         href={href}
