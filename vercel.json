@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/((?!automations/).*)", "destination": "/index.html" }
+    { "source": "/((?!automations/tiktok).*)","destination": "/index.html" }
   ]
 }
